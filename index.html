@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Automação de Ambientes e Soluções Elétricas</title>
-  <meta name="description" content="Automação de ambientes e soluções elétricas inteligentes. Atendimento em [São Bento e região]. Agende sua visita técnica." />
+  <meta name="description" content="Automação de ambientes e soluções elétricas inteligentes. Atendimento em São Bento e região. Agende sua visita técnica." />
 
   <style>
     :root {
@@ -142,18 +142,18 @@
   <h1>Automação de Ambientes e Soluções Elétricas Inteligentes</h1>
   <p>💡 Instalações, manutenções e upgrades elétricos</p>
   <p>⚡ Transformando energia em conforto e segurança</p>
-  <p><strong>Atendimento em [São Bento e regiões]</strong></p>
+  <p><strong>Atendimento em São Bento e região</strong></p>
 </header>
 
 <section class="container">
   <h2>Serviços</h2>
   <div class="grid">
-    <div class="card" onclick="abrirModal('automacao')"><span>💡</span>Automação de ambientes</div>
-    <div class="card" onclick="abrirModal('instalacoes')"><span>⚡</span>Instalações elétricas</div>
-    <div class="card" onclick="abrirModal('manutencao')"><span>🔧</span>Manutenção elétrica</div>
-    <div class="card" onclick="abrirModal('upgrade')"><span>🚀</span>Upgrade elétrico</div>
-    <div class="card" onclick="abrirModal('alexa')"><span>📱</span>Alexa e Google Home</div>
-    <div class="card" onclick="abrirModal('seguranca')"><span>🔒</span>Segurança e acesso</div>
+    <button class="card" onclick="abrirModal('automacao')"><span>💡</span>Automação de ambientes</button>
+    <button class="card" onclick="abrirModal('instalacoes')"><span>⚡</span>Instalações elétricas</button>
+    <button class="card" onclick="abrirModal('manutencao')"><span>🔧</span>Manutenção elétrica</button>
+    <button class="card" onclick="abrirModal('upgrade')"><span>🚀</span>Upgrade elétrico</button>
+    <button class="card" onclick="abrirModal('alexa')"><span>📱</span>Alexa e Google Home</button>
+    <button class="card" onclick="abrirModal('seguranca')"><span>🔒</span>Segurança e acesso</button>
   </div>
 </section>
 
@@ -162,9 +162,9 @@
   <p>📸 Instagram: @luz_e_lar_solucoeseletricas</p>
 </footer>
 
-<a class="whatsapp-float" href="https://wa.me/5547996010440">WhatsApp</a>
+<a class="whatsapp-float" href="https://wa.me/5547996010440?text=Olá,%20gostaria%20de%20mais%20informações%20sobre%20serviços%20elétricos.">WhatsApp</a>
 
-<div class="modal" id="modal">
+<div class="modal" id="modal" tabindex="0">
   <div class="modal-content">
     <span class="close" onclick="fecharModal()">✕</span>
     <h3 id="modal-title"></h3>
@@ -232,6 +232,7 @@
     document.getElementById('modal-whatsapp').href = `https://wa.me/${WHATSAPP_NUMERO}?text=${msg}`;
 
     document.getElementById('modal').style.display = 'flex';
+    document.getElementById('modal').focus();
   }
 
   function fecharModal() {
