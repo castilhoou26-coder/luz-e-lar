@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Automação de Ambientes e Soluções Elétricas</title>
+  <meta name="description" content="Automação de ambientes e soluções elétricas inteligentes. Atendimento em [CIDADE]. Agende sua visita técnica." />
+
+  <style>
+    :root {
+      --bg: #0b1220;
+      --card: #111827;
+      --primary: #facc15;
+      --secondary: #38bdf8;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, Helvetica, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+
+    .container { max-width: 1100px; margin: auto; padding: 48px 16px; }
+
+    header {
+      padding: 96px 16px;
+      text-align: center;
+      background: radial-gradient(circle at top, #020617, #0b1220);
+    }
+
+    header h1 { font-size: 2.6rem; margin-bottom: 16px; }
+    header p { margin-bottom: 8px; color: var(--muted); }
+
+    .cta {
+      display: inline-block;
+      margin-top: 28px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #000;
+      padding: 16px 28px;
+      border-radius: 10px;
+      font-weight: bold;
+      transition: transform .2s ease;
+    }
+
+    .cta:hover { transform: scale(1.05); }
+
+    h2 { text-align: center; font-size: 2rem; margin-bottom: 32px; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--card);
+      padding: 28px 20px;
+      border-radius: 18px;
+      border: 1px solid #1f2937;
+      text-align: center;
+      cursor: pointer;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0,0,0,.4);
+    }
+
+    .card span { font-size: 2rem; display: block; margin-bottom: 10px; }
+
+    .steps, .benefits {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .step, .benefit {
+      background: var(--card);
+      padding: 24px;
+      border-radius: 16px;
+      border: 1px solid #1f2937;
+    }
+
+    .final-cta {
+      text-align: center;
+      background: #020617;
+      border-radius: 24px;
+      padding: 64px 20px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 16px;
+      border-top: 1px solid #1f2937;
+      color: var(--muted);
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.75);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+
+    .modal-content {
+      background: var(--card);
+      max-width: 420px;
+      width: 90%;
+      padding: 28px;
+      border-radius: 20px;
+      position: relative;
+    }
+
+    .close {
+      position: absolute;
+      top: 14px;
+      right: 18px;
+      font-size: 22px;
+      cursor: pointer;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25d366;
+      color: #000;
+      padding: 14px 18px;
+      border-radius: 50px;
+      font-weight: bold;
+      z-index: 999;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Automação de Ambientes e Soluções Elétricas Inteligentes</h1>
+  <p>💡 Instalações, manutenções e upgrades elétricos</p>
+  <p>⚡ Transformando energia em conforto e segurança</p>
+  <p><strong>Atendimento em [CIDADE / REGIÃO]</strong></p>
+</header>
+
+<section class="container">
+  <h2>Serviços</h2>
+  <div class="grid">
+    <div class="card" onclick="abrirModal('automacao')"><span>💡</span>Automação de ambientes</div>
+    <div class="card" onclick="abrirModal('instalacoes')"><span>⚡</span>Instalações elétricas</div>
+    <div class="card" onclick="abrirModal('manutencao')"><span>🔧</span>Manutenção elétrica</div>
+    <div class="card" onclick="abrirModal('upgrade')"><span>🚀</span>Upgrade elétrico</div>
+    <div class="card" onclick="abrirModal('alexa')"><span>📱</span>Alexa e Google Home</div>
+    <div class="card" onclick="abrirModal('seguranca')"><span>🔒</span>Segurança e acesso</div>
+  </div>
+</section>
+
+<footer>
+  <p>📍 [CIDADE / REGIÃO]</p>
+  <p>📸 Instagram: @luz_e_lar_solucoeseletricas</p>
+</footer>
+
+<a class="whatsapp-float" href="https://wa.me/5547996010440">WhatsApp</a>
+
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <span class="close" onclick="fecharModal()">✕</span>
+    <h3 id="modal-title"></h3>
+    <p id="modal-text"></p>
+    <ul id="modal-list"></ul>
+    <a class="cta" id="modal-whatsapp" href="#" target="_blank">👉 Agendar Visita Técnica</a>
+  </div>
+</div>
+
+<script>
+  const conteudo = {
+    automacao: {
+      title: '💡 Automação de Ambientes',
+      text: 'Controle iluminação, tomadas, cortinas e cenas automáticas pelo celular ou voz.',
+      list: ['Iluminação inteligente','Rotinas personalizadas','Economia de energia','Alexa e Google Home'],
+      whatsapp: 'Olá, gostaria de agendar uma visita técnica para automação de ambientes.'
+    },
+    instalacoes: {
+      title: '⚡ Instalações Elétricas',
+      text: 'Instalações seguras e dentro das normas técnicas.',
+      list: ['Tomadas','Iluminação','Quadros elétricos','Residencial e comercial'],
+      whatsapp: 'Olá, gostaria de agendar uma visita técnica para instalações elétricas.'
+    },
+    manutencao: {
+      title: '🔧 Manutenção Elétrica',
+      text: 'Correção de falhas e prevenção de problemas elétricos.',
+      list: ['Curto-circuito','Quedas de energia','Revisões','Emergencial'],
+      whatsapp: 'Olá, gostaria de agendar uma visita técnica para manutenção elétrica.'
+    },
+    upgrade: {
+      title: '🚀 Upgrade Elétrico',
+      text: 'Modernização da rede para mais segurança e eficiência.',
+      list: ['Troca de disjuntores','Aumento de carga','Adequação às normas'],
+      whatsapp: 'Olá, gostaria de agendar uma visita técnica para upgrade elétrico.'
+    },
+    alexa: {
+      title: '📱 Integração Inteligente',
+      text: 'Controle sua casa pelo celular ou voz.',
+      list: ['Alexa','Google Home','App no celular'],
+      whatsapp: 'Olá, gostaria de agendar uma visita técnica para integração com Alexa / Google Home.'
+    },
+    seguranca: {
+      title: '🔒 Segurança e Acesso',
+      text: 'Soluções completas em segurança residencial.',
+      list: ['Câmeras','Portões','Controle de acesso'],
+      whatsapp: 'Olá, gostaria de agendar uma visita técnica para câmeras e controle de acesso.'
+    }
+  };
+
+  function abrirModal(tipo) {
+    const data = conteudo[tipo];
+    document.getElementById('modal-title').innerText = data.title;
+    document.getElementById('modal-text').innerText = data.text;
+
+    const ul = document.getElementById('modal-list');
+    ul.innerHTML = '';
+    data.list.forEach(item => {
+      const li = document.createElement('li');
+      li.innerText = '✔ ' + item;
+      ul.appendChild(li);
+    });
+
+    const msg = encodeURIComponent(data.whatsapp);
+    const WHATSAPP_NUMERO = '5547996010440';
+    document.getElementById('modal-whatsapp').href = `https://wa.me/${WHATSAPP_NUMERO}?text=${msg}`;
+
+    document.getElementById('modal').style.display = 'flex';
+  }
+
+  function fecharModal() {
+    document.getElementById('modal').style.display = 'none';
+  }
+</script>
+
+</body>
+</html>
