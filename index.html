@@ -29,7 +29,7 @@
     }
 
     header h1 { font-size: 2.6rem; margin-bottom: 16px; }
-    header p { margin-bottom: 8px; color: var(--muted); }
+    header p { margin-bottom: 8px; color: var(--muted); font-size: 1.1rem; }
 
     .cta {
       display: inline-block;
@@ -40,6 +40,7 @@
       border-radius: 10px;
       font-weight: bold;
       transition: transform .2s ease;
+      font-size: 1rem;
     }
 
     .cta:hover { transform: scale(1.05); }
@@ -55,19 +56,27 @@
     .card {
       background: var(--card);
       padding: 28px 20px;
-      border-radius: 18px;
+      border-radius: 20px;
       border: 1px solid #1f2937;
       text-align: center;
       cursor: pointer;
       transition: transform .25s ease, box-shadow .25s ease;
+      color: #f5f5f5;
+      font-size: 1.1rem;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
     }
 
     .card:hover {
       transform: translateY(-6px);
-      box-shadow: 0 20px 40px rgba(0,0,0,.4);
+      box-shadow: 0 12px 30px rgba(0,0,0,.4);
     }
 
-    .card span { font-size: 2rem; display: block; margin-bottom: 10px; }
+    .card span {
+      font-size: 2.5rem;
+      display: block;
+      margin-bottom: 10px;
+      color: var(--primary);
+    }
 
     .steps, .benefits {
       display: grid;
@@ -75,12 +84,18 @@
       gap: 20px;
     }
 
-    .step, .benefit {
+    .reason {
       background: var(--card);
       padding: 24px;
       border-radius: 16px;
       border: 1px solid #1f2937;
+      text-align: left;
+      font-size: 1rem;
+      line-height: 1.4;
     }
+
+    .reason h3 { color: var(--primary); margin-bottom: 12px; }
+    .reason ul { margin-left: 18px; list-style: disc; color: var(--text); }
 
     .final-cta {
       text-align: center;
@@ -129,10 +144,21 @@
       right: 20px;
       background: #25d366;
       color: #000;
-      padding: 14px 18px;
+      padding: 18px 24px;
       border-radius: 50px;
       font-weight: bold;
+      font-size: 1rem;
       z-index: 999;
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 2rem; }
+      header p { font-size: 1rem; }
+      .card span { font-size: 3rem; }
+      .card { padding: 24px 16px; font-size: 1.2rem; }
+      .container { padding: 32px 16px; }
+      .reason { font-size: 0.95rem; padding: 18px; }
+      .cta { padding: 14px 24px; font-size: 1rem; }
     }
   </style>
 </head>
@@ -157,6 +183,50 @@
   </div>
 </section>
 
+<section class="container">
+  <h2>Motivos para escolher a Automação de Ambientes</h2>
+  <div class="reason">
+    <h3>💡 Instalações, manutenções e upgrades eficientes</h3>
+    <ul>
+      <li>Instalações rápidas e dentro das normas</li>
+      <li>Manutenção preventiva e corretiva</li>
+      <li>Upgrade de sistemas para máxima eficiência</li>
+    </ul>
+  </div>
+  <div class="reason">
+    <h3>⚡ Transformando energia em conforto e segurança</h3>
+    <ul>
+      <li>Iluminação automatizada e economia de energia</li>
+      <li>Ambientes seguros com monitoramento inteligente</li>
+      <li>Conforto diário com cenas pré-programadas</li>
+    </ul>
+  </div>
+  <div class="reason">
+    <h3>🔧 Evita falhas e problemas elétricos</h3>
+    <ul>
+      <li>Detecção e prevenção de curto-circuitos</li>
+      <li>Redução de quedas de energia</li>
+      <li>Segurança da rede elétrica da residência ou empresa</li>
+    </ul>
+  </div>
+  <div class="reason">
+    <h3>📱 Controle total pelo celular ou assistentes de voz</h3>
+    <ul>
+      <li>Controle remoto via app</li>
+      <li>Compatível com Alexa e Google Home</li>
+      <li>Programação de rotinas personalizadas</li>
+    </ul>
+  </div>
+  <div class="reason">
+    <h3>🔒 Mais proteção para sua residência ou empresa</h3>
+    <ul>
+      <li>Câmeras de monitoramento inteligentes</li>
+      <li>Controle de acesso a portões e alarmes</li>
+      <li>Mais segurança e tranquilidade para sua família ou colaboradores</li>
+    </ul>
+  </div>
+</section>
+
 <footer>
   <p>📍 São Bento do Sul / SC</p>
   <p>📸 Instagram: @luz_e_lar_solucoeseletricas</p>
@@ -176,42 +246,12 @@
 
 <script>
   const conteudo = {
-    automacao: {
-      title: '💡 Automação de Ambientes',
-      text: 'Controle iluminação, tomadas, cortinas e cenas automáticas pelo celular ou voz.',
-      list: ['Iluminação inteligente','Rotinas personalizadas','Economia de energia','Alexa e Google Home'],
-      whatsapp: 'Olá, gostaria de agendar uma visita técnica para automação de ambientes.'
-    },
-    instalacoes: {
-      title: '⚡ Instalações Elétricas',
-      text: 'Instalações seguras e dentro das normas técnicas.',
-      list: ['Tomadas','Iluminação','Quadros elétricos','Residencial e comercial'],
-      whatsapp: 'Olá, gostaria de agendar uma visita técnica para instalações elétricas.'
-    },
-    manutencao: {
-      title: '🔧 Manutenção Elétrica',
-      text: 'Correção de falhas e prevenção de problemas elétricos.',
-      list: ['Curto-circuito','Quedas de energia','Revisões','Emergencial'],
-      whatsapp: 'Olá, gostaria de agendar uma visita técnica para manutenção elétrica.'
-    },
-    upgrade: {
-      title: '🚀 Upgrade Elétrico',
-      text: 'Modernização da rede para mais segurança e eficiência.',
-      list: ['Troca de disjuntores','Aumento de carga','Adequação às normas'],
-      whatsapp: 'Olá, gostaria de agendar uma visita técnica para upgrade elétrico.'
-    },
-    alexa: {
-      title: '📱 Integração Inteligente',
-      text: 'Controle sua casa pelo celular ou voz.',
-      list: ['Alexa','Google Home','App no celular'],
-      whatsapp: 'Olá, gostaria de agendar uma visita técnica para integração com Alexa / Google Home.'
-    },
-    seguranca: {
-      title: '🔒 Segurança e Acesso',
-      text: 'Soluções completas em segurança residencial.',
-      list: ['Câmeras','Portões','Controle de acesso'],
-      whatsapp: 'Olá, gostaria de agendar uma visita técnica para câmeras e controle de acesso.'
-    }
+    automacao: { title: '💡 Automação de Ambientes', text: 'Controle iluminação, tomadas, cortinas e cenas automáticas pelo celular ou voz.', list: ['Iluminação inteligente','Rotinas personalizadas','Economia de energia','Alexa e Google Home'], whatsapp: 'Olá, gostaria de agendar uma visita técnica para automação de ambientes.'},
+    instalacoes: { title: '⚡ Instalações Elétricas', text: 'Instalações seguras e dentro das normas técnicas.', list: ['Tomadas','Iluminação','Quadros elétricos','Residencial e comercial'], whatsapp: 'Olá, gostaria de agendar uma visita técnica para instalações elétricas.'},
+    manutencao: { title: '🔧 Manutenção Elétrica', text: 'Correção de falhas e prevenção de problemas elétricos.', list: ['Curto-circuito','Quedas de energia','Revisões','Emergencial'], whatsapp: 'Olá, gostaria de agendar uma visita técnica para manutenção elétrica.'},
+    upgrade: { title: '🚀 Upgrade Elétrico', text: 'Modernização da rede para mais segurança e eficiência.', list: ['Troca de disjuntores','Aumento de carga','Adequação às normas'], whatsapp: 'Olá, gostaria de agendar uma visita técnica para upgrade elétrico.'},
+    alexa: { title: '📱 Integração Inteligente', text: 'Controle sua casa pelo celular ou voz.', list: ['Alexa','Google Home','App no celular'], whatsapp: 'Olá, gostaria de agendar uma visita técnica para integração com Alexa / Google Home.'},
+    seguranca: { title: '🔒 Segurança e Acesso', text: 'Soluções completas em segurança residencial.', list: ['Câmeras','Portões','Controle de acesso'], whatsapp: 'Olá, gostaria de agendar uma visita técnica para câmeras e controle de acesso.'}
   };
 
   function abrirModal(tipo) {
